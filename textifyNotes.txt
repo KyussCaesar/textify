@@ -1,0 +1,116 @@
+The following is copied out of ideas.txt.
+
+Programming language for word processing, kinda like LaTeX
+ - Maybe look into how HTML, LaTeX, etc. work, they might already do what you are thinking of.
+Specific features:
+
+Start of document:
+Page dimensions
+metadata:
+ - author
+ - date created
+ - date last rendered?
+ - filename
+
+Lines in the document that are commands start with a bang !
+Lines without a ! are considered text to be rendered.
+Documents will use C-style comments ( // and /* */ )
+
+Define styles:
+styledef $styleIdentifier : $inheritsFrom {
+	typeface;
+	font;
+	pt;
+	lineSpacing;
+	horizontalAlignment
+	verticalAlignment
+}
+
+Styles can inherit propeties of other styles. Definition of properties in the derived style will overwrite the values recieved from the base style. Make it possible to inherit from the current style, e.g
+
+styledef $styleIdentifier : CURRENT_STYLE {
+	// style definition here
+}
+
+Using styles:
+!style:$styleID;
+// This style will be applied to all text after this point, until a new style directive is parsed.
+
+Other built-in constants:
+SECTION_NUMBER
+PAGE_NUMBER
+SECTION_COUNT
+PAGE_COUNT
+
+inserting pictures
+
+Define sections:
+section $sectionTitle {
+	// stuff in the section
+}
+
+When leaving scope, the style will change back to the previously defined style.
+
+Starting another section within a section should make the numbering automatically go from 1, 2 etc. to 1, 1,1
+
+Define Table of "contents" (can be table of headings of ( sections | figures | tables ).
+TOC's will automatically fill with the titles that was written in $style.
+TOC options:
+ - Treat derived styles as TOC subheadings?
+	 - Maximum number of levels to do TOC subheadings?
+TOC ($style) {
+}
+
+Generic counter:
+User-Defined variable. Value is incremented each time it it printed. For use when the automatic numbering isn't quite doing what you want.
+Defining counter:
+counter $counterName $startValue
+
+List:
+listStyle specifies whether to use bullets, dashes, or whatever. textStyle is optional that specifies a style to use for the text. If not specified, then the last specified style is used.
+Define list:
+List (listStyle, textStyle) {
+	$item 1
+	$item 2
+}
+
+Lists also return the value of the counter (i.e, the number of elements in the list).
+
+counter $counter = List () {
+	// list elements
+}
+
+Columns:
+Columns are evenly sized across the page. Text will fill the current column, then the next column on the current page, then the first column on the next page, and so on.
+Define column:
+Column ($numCols) {
+	// text to break into columns
+}
+
+Tables:
+Multiple methods:
+ - Specify name of ( .csv | .xls(x) ) file to import.
+ - Write in document:
+
+table (tableStyle, tableEntryStyle) {
+	val1, val2;
+	val3, val4;
+}
+
+commas separate entries, semicolons separate lines.
+
+tableStyle is the style to use for the *table itself*, probably defines also what to do with words vs numbers in the table data. tableEntries defines the style to use for the entries in the table (maybe also specify whether there are borders on cells or not etc.).
+
+Probably want keywords for:
+date/time in various formats
+start/restart/restartFrom/stop numbering of:
+	- Page
+	- Page count
+	- Section
+	- Section count
+	- Figure
+
+breaks:
+- page
+- section
+- column
