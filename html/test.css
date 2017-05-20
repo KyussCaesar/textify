@@ -40,30 +40,30 @@ section section sectiontitle {
 
 /* Section Numbering */
 /*{*/
-section sectiontitle::before {
+body > section > sectiontitle::before {
 	counter-increment: sectionone;
 	counter-reset: sectiontwo;
 	content: counter(sectionone) ": "
 }
 
-section section sectiontitle::before {
+body > section > section > sectiontitle::before {
 	counter-increment: sectiontwo;
 	counter-reset: sectiontre;
 	content: counter(sectionone) "." counter(sectiontwo) ": "
 }
 
-section section section sectiontitle::before {
+body > section > section > section > sectiontitle::before {
 	counter-increment: sectiontre;
 	counter-reset: sectionfor;
 	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) ": "
 }
 
-section section section section sectiontitle::before {
+body > section > section > section > section > sectiontitle::before {
 	counter-increment: sectionfor;
 	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) "." counter(sectionfor) ": "
 }
 
-section section section section section sectiontitle::before {
+body > section > section > section > section > section > sectiontitle::before {
 	content: "ERROR: SECTION NUMBERING TOO DEEP"
 }
 /* end section numbering } */
