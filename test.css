@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
 	counter-reset: sectionone;
 
@@ -18,7 +17,6 @@ section section sectiontitle::before {
 	content: counter(sectionone) "." counter(sectiontwo) ": "
 }
 
-
 section section section sectiontitle::before {
 	counter-increment: sectiontre;
 	counter-reset: sectionfor;
@@ -28,15 +26,8 @@ section section section sectiontitle::before {
 section section section section sectiontitle::before {
 	counter-increment: sectionfor;
 	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) "." counter(sectionfor) ": "
-=======
-body,
-section h1 + * {
-	counter-reset: section;
 }
 
-section h1::before {
-	counter-increment: section;
-	content: counter(section);
->>>>>>> master
+section section section section section sectiontitle::before {
+	content: "ERROR: SECTION NUMBERING TOO DEEP"
 }
-
