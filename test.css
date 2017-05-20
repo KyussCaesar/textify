@@ -1,18 +1,31 @@
 body {
+	counter-reset: sectionone;
+
 	font: arial;
 	color: black;
 }
 
-section {
-	counter-reset: section_count;
-	color: black;
+section sectiontitle::before {
+	counter-increment: sectionone;
+	counter-reset: sectiontwo;
+	content: counter(sectionone) ": "
 }
 
-section:before {
-	counter-increment: section_count;
-	content: counters(section_count, ".") ": " attr(title);
+section section sectiontitle::before {
+	counter-increment: sectiontwo;
+	counter-reset: sectiontre;
+	content: counter(sectionone) "." counter(sectiontwo) ": "
 }
 
-section:after {
-	counter-reset: section_count;
+
+section section section sectiontitle::before {
+	counter-increment: sectiontre;
+	counter-reset: sectionfor;
+	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) ": "
 }
+
+section section section section sectiontitle::before {
+	counter-increment: sectionfor;
+	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) "." counter(sectionfor) ": "
+}
+
