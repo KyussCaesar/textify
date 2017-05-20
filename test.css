@@ -1,18 +1,9 @@
-body {
-	font: arial;
-	color: black;
+body,
+section h1 + * {
+	counter-reset: section;
 }
 
-section {
-	counter-reset: section_count;
-	color: black;
-}
-
-section:before {
-	counter-increment: section_count;
-	content: counters(section_count, ".") ": " attr(title);
-}
-
-section:after {
-	counter-reset: section_count;
+section h1::before {
+	counter-increment: section;
+	content: counter(section);
 }
