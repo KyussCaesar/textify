@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
 	counter-reset: sectionone;
 
@@ -27,5 +28,15 @@ section section section sectiontitle::before {
 section section section section sectiontitle::before {
 	counter-increment: sectionfor;
 	content: counter(sectionone) "." counter(sectiontwo) "." counter(sectiontre) "." counter(sectionfor) ": "
+=======
+body,
+section h1 + * {
+	counter-reset: section;
+}
+
+section h1::before {
+	counter-increment: section;
+	content: counter(section);
+>>>>>>> master
 }
 
