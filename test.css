@@ -1,9 +1,0 @@
-body,
-section h1 + * {
-	counter-reset: section;
-}
-
-section h1::before {
-	counter-increment: section;
-	content: counter(section);
-}
