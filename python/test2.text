@@ -8,20 +8,20 @@
 	<body>
 
 		<section>
-		<sectiontitle>1: SECTIONNUMBER: Introduction</sectiontitle>
+		<sectiontitle>Introduction</sectiontitle>
 		
 		<p>text</p>
 		<p>more text</p>
 
 			<section>
-			<sectiontitle>1.1: SECTIONNUMBER: Some Information</sectiontitle>
-			
+			<sectiontitle>Some Information</sectiontitle>
+
 			<p>Text</p>
 
 			</section>
 
 			<section>
-			<sectiontitle>1.2: other information</sectiontitle>
+			<sectiontitle>other information</sectiontitle>
 
 			<p>Text</p>
 
@@ -30,12 +30,12 @@
 		</section>
 
 		<section>
-		<sectiontitle>2: hello there</sectiontitle>
+		<sectiontitle>hello there</sectiontitle>
 
 		<p>Hey look even more text</p>
 
 			<section>
-			<sectiontitle>2.1: this will make a fine addition to my collection</sectiontitle>
+			<sectiontitle>this will make a fine addition to my collection</sectiontitle>
 
 			<p>text in the subsection</p>
 
