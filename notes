@@ -1,9 +1,5 @@
-html/css notes
-
-headings
-
-	<hx> where x is [1..6]
-
-sections
-
-	<div>
+Propose:
+	Start with some hybrid doc
+	replace certain keywords and stuff
+	output of that is an html doc
+	styling defined by css
