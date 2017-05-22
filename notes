@@ -1,5 +1,31 @@
-Propose:
-	Start with some hybrid doc
-	replace certain keywords and stuff
-	output of that is an html doc
-	styling defined by css
+Start with some hybrid doc
+replace certain keywords and stuff
+output of that is an html doc
+styling defined by css
+
+references:
+	default to APA style
+	not really sure how to specify in line
+	something that marks up a reference for you?
+	maybe some kind of extra file where you specify
+
+		resource title
+		resource author
+		resource type
+		date published
+		date acessed
+
+specify reference inline with an id, some setting or cmdline option determines type.
+
+	<p>I am talking about foo in this paragraph. It has been established that foo's are great for the purpose of bar <reference>fooref</reference>. We seek to further research in this area.</p>
+
+Inside a references file;
+
+	fooref:
+		title: foos are awesome!;
+		author : foo fighers;
+		type : article;
+		date_pub : 2001;
+		date_acc : 2020;
+
+Program will automatically build list of references in the specified style.

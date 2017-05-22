@@ -1,0 +1,17 @@
+body {
+	font-family: "Palatino";
+}
+
+section > sectiontitle {
+	text-align: left;
+	line-height: 1.5;
+	font-weight: bold;
+	font-size: 150%;
+	text-transform: capitalize;
+}
+
+section > section > sectiontitle {
+	line-height: 1.2;
+	font-size: 120%;
+}
+
