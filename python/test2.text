@@ -23,7 +23,7 @@
 			<section>
 			<sectiontitle>other information</sectiontitle>
 
-			<p>Text <reference></reference></p>
+			<p>Text <reference>firstRef</reference></p>
 
 			</section>
 
@@ -38,6 +38,8 @@
 			<sectiontitle>this will make a fine addition to my collection</sectiontitle>
 
 			<p>text in the subsection</p>
+
+			<p>In this paragraph, we know about something because it is established <reference>notInReferenceFile</reference>.</p>
 
 			</section>
 

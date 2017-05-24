@@ -1,0 +1,28 @@
+// testing references file
+
+// based on JSON format but will probably look more like CSS or something
+// There are no comments in regular JSON, but they are helpful so I'm going to include them.
+// Evidently, comments will be C-style // for line comments
+// no multi-line comment by default (maybe add later)
+
+// this file contains all the data required to do references for each reference.
+// the grammar for a reference is defined below:
+
+//	referenceIdentifer { 
+//		[ property : "value" ; ]
+//	}
+
+// a reference id, followed by zero or more property specifiers, which is just
+// a property, then a colon, then a value, then a semicolon.
+// each property on a new line
+
+{
+	"firstRef" : {
+		"author" : "Harvey Danger",
+		"title" : "Where Have All The Merrymakers Gone?",
+		"date_pub" : 2001,
+		"date_accessed" : 2017,
+		"publisher" : "Jeff The Lion Records"
+		"reftype" : "Music"
+	}
+}

@@ -29,3 +29,15 @@ Inside a references file;
 		date_acc : 2020;
 
 Program will automatically build list of references in the specified style.
+
+general form of reference inline:
+
+	(author, year_published)
+
+general form of reference in table:
+
+	authors, (year). Title (edition, pages). Place of Publication. Publisher. Retrieved from:
+
+sometimes there is info like "research paper" or "presentation" or "in communication" (i.e, "i talked to them")
+
+maybe for now, default to an "APA-esque" style
