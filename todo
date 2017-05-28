@@ -1,0 +1,8 @@
+setup automated testing process
+{
+	have a folder called test
+	make test runs a script that calls textify on stuff
+	give report at the end
+}
+template files
+remove all the header info from .text files
