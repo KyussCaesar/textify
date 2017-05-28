@@ -8,7 +8,7 @@ import re
 def main():
 	# process args
 #{
-	argparser = argparse.ArgumentParser(description="Processes textify files")
+	argparser = argparse.ArgumentParser(description="Processes textify files. Requires Python3.6 or later.")
 	argparser.add_argument(
 		"file",
 		type=open,
@@ -16,7 +16,7 @@ def main():
 	argparser.add_argument(
 		"--refs", "-r",
 		type=open,
-		help="references for the file")
+		help="references for the file. JSON formatting.")
 
 	args = argparser.parse_args()
 #}
@@ -34,6 +34,7 @@ def main():
 	references = {}
 	if args.refs:
 		references = json.load(args.refs)
+
 	# this is the list of references that were actually used in the doc
 	referencesUsed = []
 #}
@@ -43,11 +44,11 @@ def main():
 	# section and reference numbering
 	outfilename = args.file.name.replace(".text", ".html", 1)
 	outreffilename = args.file.name.replace(".text", ".refs", 1)
-	with open(outfilename, "w") as outputfile:
 #}
 
 	# process file
 #{
+	with open(outfilename, "w") as outputfile:
 		for line in args.file:
 
 			# handle section numbering
@@ -88,7 +89,7 @@ def main():
 					if refId in references:
 					# get inline reference info
 						inlineAuthorName = references[refId]['inlineAuthorName']
-						year_pub = str(references[refId]['year_pub'])
+						year_pub = str(references[refId]['inlineDate'])
 					
 					# build the inline refernce string
 						inlineReference = "(" + inlineAuthorName + ", " + year_pub + ")"
@@ -99,13 +100,97 @@ def main():
 						line = re.sub(toReplace, replacement, line)
 					
 					# finally, add it to the list of used references
-						referencesUsed.append(refId)
+						referencesUsed.append(references[refId])
 					
 					else:
+					# reference with id refId was not found in refDict
 						sys.stderr.write(f"error: reference not found in references file: {refId}\n")
 #}
 
+			# handle bibliography
+#{
+			if "<bibliography>" in line:
+			# first sort the list of references based on inline author name
+				referencesUsed = sorted(referencesUsed, key=lambda d: d['inlineAuthorName'])
+			
+			# now iterate over the list of references
+				for ref in referencesUsed:
+				# build a string for the bibliography for this reference
+					refString = ""
+#{
+					refString += ref["bibAuthorName"] + ", "
+
+					if "inlineDate" in ref:
+						refString += "(" + ref["inlineDate"] + "). "
+					else:
+						refString += "(n.d). "
+
+					refString += "<referenceTitle>" + ref["bibTitle"] + "</referenceTitle> "
+
+					if "bibEdition" in ref:
+						refString += "(" + ref["bibEdition"]
+
+						if "bibPageNum" in ref:
+							refString += ", " + ref["bibPageNum"]
+
+						refString += "). "
+					
+					if "bibPlaceOfPub" in ref:
+						refString += ref["bibPlaceOfPub"] + ". "
+
+					if "bibPublisher" in ref:
+						refString += ref["bibPublisher"] + ". "
+
+					if "bibDateRetrieved" in ref:
+						refString += "Retrieved: " + ref["bibDateRetrieved"] + ". "
+#}
+					line += "<br><br>" + refString
+
+#}
+
 			outputfile.write(line)
+#}
+
+	# create bibliography file
+#{
+	with open(outreffilename, "w") as bib:
+		bib.write("<bibliography>")
+	# first sort the list of references based on inline author name
+		referencesUsed = sorted(referencesUsed, key=lambda d: d['inlineAuthorName'])
+	
+	# now iterate over the list of references
+		for ref in referencesUsed:
+		# build a string for the bibliography for this reference
+			refString = ""
+			refString += ref["bibAuthorName"] + ", "
+
+			if "inlineDate" in ref:
+				refString += "(" + ref["inlineDate"] + "). "
+			else:
+				refString += "(n.d). "
+
+			refString += "<referenceTitle>" + ref["bibTitle"] + "</referenceTitle> "
+
+			if "bibEdition" in ref:
+				refString += "(" + ref["bibEdition"]
+
+				if "bibPageNum" in ref:
+					refString += ", " + ref["bibPageNum"]
+
+				refString += "). "
+			
+			if "bibPlaceOfPub" in ref:
+				refString += ref["bibPlaceOfPub"] + ". "
+
+			if "bibPublisher" in ref:
+				refString += ref["bibPublisher"] + ". "
+
+			if "bibDateRetrieved" in ref:
+				refString += "Retrieved: " + ref["bibDateRetrieved"] + ". "
+
+			bib.write(refString)
+
+		bib.write("</bibliography>")
 #}
 
 	return 0

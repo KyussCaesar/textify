@@ -23,7 +23,7 @@
 			<section>
 			<sectiontitle>other information</sectiontitle>
 
-			<p>Text <reference>firstRef</reference></p>
+			<p>Text <reference>hibbler</reference></p>
 
 			</section>
 
@@ -41,9 +41,16 @@
 
 			<p>In this paragraph, we know about something because it is established <reference>notInReferenceFile</reference>.</p>
 
+			<p>Control Systems engineering is fun!! <reference>nise</reference>.</p>
+
 			</section>
 
 		</section>
-
+		<section>
+		<sectiontitle>Bibliography
+		</sectiontitle>
+		
+		<bibliography></bibliography>
+		</section>
 	</body>
 </html>

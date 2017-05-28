@@ -2,6 +2,21 @@ body {
 	font-family: "Palatino";
 }
 
+body p {
+	text-align: left;
+	line-height: 1;
+}
+
+body bibliography {
+	text-align: left;
+	font-style: normal;
+	line-height: 1;
+}
+
+referenceTitle {
+	font-style: italic;
+}
+
 section > sectiontitle {
 	text-align: left;
 	line-height: 1.5;
