@@ -25,7 +25,7 @@ def main():
 #{
 	# There is one counter per "level" of section (e.g 1.2.3)
 	# We inc/decrement the section level when we enter or leave a section, respectively.
-	sectioncounter = [0, 0, 0, 0]
+	sectioncounter = [0, 0, 0, 0, 0]
 	sectionlevel = 0
 #}
 
@@ -33,7 +33,10 @@ def main():
 #{
 	references = {}
 	if args.refs:
-		references = json.load(args.refs)
+		cleanReferenceFile(args.refs.name)
+
+		with open(args.refs.name.replace(".references", ".json")) as rfp:
+			references = json.load(rfp)
 
 	# this is the list of references that were actually used in the doc
 	referencesUsed = []
@@ -52,7 +55,7 @@ def main():
 		for line in args.file:
 
 			# handle section numbering
-		#{
+#{
 			if "<section>" in line:
 			# Increment section counter for this level, and go up one level
 				sectioncounter[sectionlevel] += 1
@@ -196,5 +199,15 @@ def main():
 	return 0
 	# end main
 
-if __name__ == "__main__":
+
+def cleanReferenceFile(fileName):
+#{
+	refFileName = fileName.replace(".references", ".json")
+	with open(fileName) as reffile, open(refFileName, "w") as outreffile:
+		for line in reffile:
+			outline = line[0:line.find("//")]
+			outreffile.write(outline)
+#}
+
+if __name__ is "__main__":
 	main()

@@ -41,3 +41,10 @@ general form of reference in table:
 sometimes there is info like "research paper" or "presentation" or "in communication" (i.e, "i talked to them")
 
 maybe for now, default to an "APA-esque" style
+
+testing
+
+each test into folders
+call textify on test file
+cmp to expected output
+report good or bad test

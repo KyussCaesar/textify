@@ -1,8 +1,14 @@
-setup automated testing process
-{
-	have a folder called test
-	make test runs a script that calls textify on stuff
-	give report at the end
-}
+testing
+	makefile: have outputs written to the output folder
+	make sure that the expected outputs are correct
+	write test cases for the bibliography
+	generate testing report in testing folder
+
+textify
+	allow cmd-line specify of output folder
+	don't do bibliography if no references
+	figures
+
 template files
-remove all the header info from .text files
+	have html header and everything specified in template
+	.text files should only have the document info.
