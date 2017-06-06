@@ -1,2 +1,6 @@
 __pycache__/
 *.swp
+
+testing/out/
+
+testing/reports/
